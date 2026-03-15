@@ -1,6 +1,8 @@
-// import {
-//   "username/claude_mbt" @lib,
-// }
+import {
+  "username/claude_mbt",
+  "moonbitlang/async",
+  "moonbitlang/core/env"
+}
 
 options(
   "is-main": true,

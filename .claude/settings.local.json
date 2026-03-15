@@ -2,7 +2,29 @@
   "permissions": {
     "allow": [
       "Bash(moon run:*)",
-      "Bash(moon test:*)"
+      "Bash(moon test:*)",
+      "Bash(git commit:*)",
+      "Bash(moon --help)",
+      "Bash(moon info:*)",
+      "Bash(moon search:*)",
+      "WebSearch",
+      "Bash(moon install:*)",
+      "Read(//private/tmp/**)",
+      "Bash(unzip -q ~/.moon/registry/cache/moonbitlang/async/0.16.8.zip)",
+      "Bash(moon build:*)",
+      "Bash(grep -r 'pub fn' ~/.moon/lib/core/_build/native/release/bundle/env/*.mbt)",
+      "Bash(find ~/.moon/lib/core -name *.mbti -path */env/* -exec strings {})",
+      "Bash(2)",
+      "Bash(chmod +x /Users/alfred/workspace/github/claude_mbt/run.sh)",
+      "Bash(/Users/alfred/workspace/github/claude_mbt/.env.example:*)",
+      "Bash(moon add:*)",
+      "Bash(moon check:*)",
+      "Bash(moon update:*)",
+      "Bash(moon doc:*)",
+      "Bash(find .mooncakes/moonbitlang/async/http -name \"*.mbt\" -exec grep -l \"pub.*Client\\\\|pub.*new\\\\|pub.*post\" {})",
+      "Bash(ls .mooncakes/moonbitlang/async/src/http/*.mbt)",
+      "Bash(.env:*)",
+      "Bash(git add:*)"
     ]
   }
 }

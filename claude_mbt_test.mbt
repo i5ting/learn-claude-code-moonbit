@@ -2,7 +2,9 @@
 // Prefer high-level behaviors over implementation details.
 // Run `moon test` to execute and `moon test --update` to refresh snapshots.
 
-test "send_message returns placeholder" {
-  let result = @claude_mbt.send_message("test-key", "hello")
-  assert_eq(result, "Not implemented")
+test "send_message returns JSON" {
+  let config = @claude_mbt.default_config()
+  let result = @claude_mbt.send_message(config, "hello")
+  assert_true(result.contains("\"model\":\"claude-opus-4-6\""))
+  assert_true(result.contains("\"content\":\"hello\""))
 }
