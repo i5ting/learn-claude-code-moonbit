@@ -1,10 +1,14 @@
 {
   "name": "username/claude_mbt",
   "version": "0.1.0",
+  "preferred-target": "native",
   "deps": {
     "moonbitlang/async": "0.16.8",
     "ShellWen/dotenv": "0.6.1",
     "moonbitlang/x": "0.4.41"
+  },
+  "test-imports": {
+    "moonbitlang/async": "0.16.8"
   },
   "readme": "README.mbt.md",
   "repository": "",

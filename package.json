@@ -1,0 +1,14 @@
+{
+  "name": "claude_mbt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "moon run cmd/main --target native",
+    "test": "moon test --target native"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

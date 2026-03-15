@@ -24,7 +24,8 @@
       "Bash(find .mooncakes/moonbitlang/async/http -name \"*.mbt\" -exec grep -l \"pub.*Client\\\\|pub.*new\\\\|pub.*post\" {})",
       "Bash(ls .mooncakes/moonbitlang/async/src/http/*.mbt)",
       "Bash(.env:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(./target/native/debug/build/cmd/test/test.exe)"
     ]
   }
 }

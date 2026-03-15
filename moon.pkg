@@ -4,5 +4,18 @@ import {
   "moonbitlang/core/strconv",
   "moonbitlang/core/hashmap",
   "moonbitlang/x/fs",
-  "moonbitlang/async/http"
+  "moonbitlang/async/http",
 }
+
+import {
+  "moonbitlang/async",
+} for "test"
+
+options(
+  targets: {
+    "claude_mbt_test.mbt": [ "native" ],
+    "client.mbt": [ "native" ],
+    "client_test.mbt": [ "native" ],
+  },
+  testimport: { },
+)

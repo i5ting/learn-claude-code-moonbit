@@ -1,5 +1,4 @@
-///|
-struct Config {
+pub struct Config {
   api_key : String
   model : String
   max_tokens : Int
@@ -7,25 +6,16 @@ struct Config {
 }
 
 ///|
-pub fn default_config() -> Config {
-  Config::{
-    api_key: "",
-    model: "claude-opus-4-6",
-    max_tokens: 10,
-    url: "https://code.newcli.com",
-  }
-}
-
-///|
 pub fn config_from_env() -> Config {
   load_env_file(".env")
-  let api_key = get_env_or("ANTHROPIC_API_KEY", "")
-  let model = get_env_or("MODEL_ID", "claude-opus-4-6")
-  let max_tokens = @strconv.parse_int(get_env_or("MAX_TOKENS", "10")) catch {
-    _ => 10
+  Config::{
+    api_key: get_env_or("ANTHROPIC_API_KEY", ""),
+    model: get_env_or("MODEL_ID", "claude-opus-4-6"),
+    max_tokens: @strconv.parse_int(get_env_or("MAX_TOKENS", "10")) catch {
+      _ => 10
+    },
+    url: get_env_or("ANTHROPIC_BASE_URL", "https://code.newcli.com"),
   }
-  let url = get_env_or("ANTHROPIC_BASE_URL", "https://code.newcli.com")
-  Config::{ api_key, model, max_tokens, url }
 }
 
 ///|
@@ -41,9 +31,7 @@ fn load_env_file(path : String) -> Unit {
     }
     let parts = s.split("=").collect()
     if parts.length() >= 2 {
-      let key = parts[0].to_string()
-      let value = parts[1].to_string()
-      env_vars.set(key, value)
+      env_vars.set(parts[0].to_string(), parts[1].to_string())
     }
   }
 }
@@ -59,9 +47,9 @@ pub async fn send_message(config : Config, message : String) -> String {
     config.model +
     "\",\"max_tokens\":" +
     config.max_tokens.to_string() +
-    ",\"messages\":[{\"role\":\"user\",\"content\":\"" +
+    ",\"messages\":[" +
     message +
-    "\"}]}"
+    "]}"
 
   let headers = {
     "x-api-key": config.api_key,
@@ -70,6 +58,10 @@ pub async fn send_message(config : Config, message : String) -> String {
   }
 
   let client = @http.Client::new(config.url)
-  let _response = client.post("/claude/aws/v1/messages", extra_headers=headers, body)
+  let _response = client.post(
+    "/claude/aws/v1/messages",
+    extra_headers=headers,
+    body,
+  )
   client.read_all().text()
 }
